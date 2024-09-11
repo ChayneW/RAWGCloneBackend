@@ -97,11 +97,12 @@ if (app.Environment.IsDevelopment())
 
 // app.UseHealthChecks("/health");
 
+// Apply the CORS middleware before the controllers
+app.UseCors("AllowFrontend");
+
 app.UseHttpsRedirection();
 app.UseAuthorization();
 
-// Apply the CORS middleware before the controllers
-app.UseCors("AllowFrontend");
 app.MapControllers();
 
 app.Run();
