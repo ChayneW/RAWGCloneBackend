@@ -104,3 +104,14 @@ EXPOSE 80
 
 # Set the entry point for the application
 ENTRYPOINT ["dotnet", "GamingAPI.dll"]
+
+
+
+[build]
+builder = "dockerfile"
+dockerfilePath = "./Dockerfile"
+
+[deploy]
+startCommand = "./"
+restartPolicyType = "always"
+healthcheckPath = "/health"
