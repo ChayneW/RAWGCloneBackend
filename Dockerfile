@@ -6,7 +6,7 @@ WORKDIR /
 
 # Copy the solution file and project files
 COPY api_rapid.sln ./
-COPY GamingAPI/*.csproj ./GamingAPI/
+COPY *.csproj ./
 
 # Restore dependencies
 RUN dotnet restore api_rapid.sln
