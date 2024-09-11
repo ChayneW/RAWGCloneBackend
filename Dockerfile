@@ -5,20 +5,20 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
 # Copy the solution file and project files
-COPY api_rapid.sln ./
-COPY GamingAPI/*.csproj ./GamingAPI/
+COPY GamingAPI/api_rapid.sln ./
+COPY GamingAPI/GamingAPI.csproj ./GamingAPI/
 
 # Restore dependencies
 RUN dotnet restore api_rapid.sln
 
 # Copy the rest of the code
-COPY . ./
+COPY GamingAPI/. ./GamingAPI/
 
 # Build the application
 RUN dotnet build --configuration Release api_rapid.sln
 
 # Publish the application
-RUN dotnet publish --configuration Release --output /app/publish api_rapid.sln
+RUN dotnet publish --configuration Release --output /app/publish GamingAPI/GamingAPI.csproj
 
 # Use the .NET 8.0 runtime image for running the application
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
