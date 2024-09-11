@@ -26,7 +26,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:3000", "https://your-frontend.vercel.app") // Update with your production frontend URL
+        policy.WithOrigins("http://localhost:3000", "https://rawg-clone-frontend-r6a2-o11jhxp4y-chaynews-projects.vercel.app/") // Update with your production frontend URL
             .AllowAnyHeader()  // Allow any headers
             .AllowAnyMethod(); // Allow any HTTP methods (GET, POST, PUT, etc.)
     });
