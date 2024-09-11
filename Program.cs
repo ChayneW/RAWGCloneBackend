@@ -2,7 +2,13 @@ using DotNetEnv;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+
 var builder = WebApplication.CreateBuilder(args);
+
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+// builder.WebHost.UseUrls($"https://*:{port}");
+
+builder.Services.AddHealthChecks();
 
 // Load environment variables from .env file
 Env.Load();
@@ -34,6 +40,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseHealthChecks("/health");
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
