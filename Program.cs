@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
 // builder.WebHost.UseUrls($"https://*:{port}");
 
-builder.Services.AddHealthChecks();
+// builder.Services.AddHealthChecks();
 
 // Load environment variables from .env file
 Env.Load();
@@ -41,7 +41,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHealthChecks("/health");
+// app.UseHealthChecks("/health");
 
 app.UseHttpsRedirection();
 app.UseAuthorization();

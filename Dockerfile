@@ -2,7 +2,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
 # Set the working directory
-WORKDIR /
+WORKDIR /app
 
 # Copy the solution file and project files
 COPY api_rapid.sln ./
