@@ -29,6 +29,9 @@ namespace GamingAPI.Models
     [JsonPropertyName("metacritic")]
     public int? Metacritic { get; set; }
 
+    [JsonPropertyName("released")]
+    public string? Released { get; set; }
+
     [JsonPropertyName("reviews_count")]
     public int? Reviews_Count { get; set; }
 
@@ -36,5 +39,8 @@ namespace GamingAPI.Models
     public List<Genre>? Genres { get; set; }
 
     // Any other fields specific to the detailed response
+
+    [JsonPropertyName("parent_platforms")]
+        public List<ParentPlatform>? ParentPlatforms { get; set; } // Adding ParentPlatforms
 }
 }
