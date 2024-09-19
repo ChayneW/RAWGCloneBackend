@@ -43,11 +43,31 @@ namespace GamingAPI.Models
         public string? Slug { get; set; }
     }
 
-    // Class for ParentPlatforms which includes Platform details
     public class ParentPlatform
     {
         [JsonPropertyName("platform")]
         public Platform? Platform { get; set; }
+    }
+
+    public class AddedByStatus
+    {
+        [JsonPropertyName("yet")]
+        public int? Yet { get; set; }
+
+        [JsonPropertyName("owned")]
+        public int? Owned { get; set; }
+
+        [JsonPropertyName("beaten")]
+        public int? Beaten { get; set; }
+
+        [JsonPropertyName("toplay")]
+        public int? ToPlay { get; set; }
+
+        [JsonPropertyName("dropped")]
+        public int? Dropped { get; set; }
+
+        [JsonPropertyName("playing")]
+        public int? Playing { get; set; }
     }
 
 
@@ -70,6 +90,9 @@ namespace GamingAPI.Models
 
         [JsonPropertyName("metacritic")]
         public int? Metacritic { get; set; }
+
+        [JsonPropertyName("rating")]
+        public float? Rating { get; set; }
         
         [JsonPropertyName("reviews_count")]
         public int? Reviews_Count { get; set; }
@@ -83,6 +106,10 @@ namespace GamingAPI.Models
         // New property for Parent Platforms
         [JsonPropertyName("parent_platforms")]
         public List<ParentPlatform>? ParentPlatforms { get; set; } // Adding ParentPlatforms
+
+        // New property for added_by_status
+        [JsonPropertyName("added_by_status")]
+        public AddedByStatus? AddedByStatus { get; set; }
     }
 
     public class ApiResponse
