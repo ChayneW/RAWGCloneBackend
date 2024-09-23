@@ -34,7 +34,7 @@ namespace GamingAPI.Controllers
                 return StatusCode(500, "API key is missing in environment variables");
             }
 
-            string apiUrl = $"https://api.rawg.io/api/games?key={apiKey}&page=1&page_size=20";
+            string apiUrl = $"https://api.rawg.io/api/games?key={apiKey}&page=1&page_size=50";
 
             HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
 
