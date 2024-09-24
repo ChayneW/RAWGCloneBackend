@@ -23,13 +23,13 @@ namespace GamingAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetGames()
-        // public async Task<IActionResult> GetGames([FromQuery] int page =  1)
+        public async Task<IActionResult> GetGames([FromQuery] int page =  1)
+        // public async Task<IActionResult> GetGames()
         {
             string? apiKey = Environment.GetEnvironmentVariable("RAWG_API_KEY");  // Nullable
             System.Console.WriteLine("TESTING API ENV:");
             System.Console.WriteLine(apiKey);
-            // System.Console.WriteLine("page #:" + page);
+            System.Console.WriteLine("page #:" + page);
             
             
             if (string.IsNullOrEmpty(apiKey))
@@ -37,8 +37,8 @@ namespace GamingAPI.Controllers
                 return StatusCode(500, "API key is missing in environment variables");
             }
 
-            string apiUrl = $"https://api.rawg.io/api/games?key={apiKey}&page=1&page_size=50";
-            // string apiUrl = $"https://api.rawg.io/api/games?key={apiKey}&page={page}&page_size=50";
+            // string apiUrl = $"https://api.rawg.io/api/games?key={apiKey}&page=1&page_size=50";
+            string apiUrl = $"https://api.rawg.io/api/games?key={apiKey}&page={page}&page_size=50";
 
             HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
 
