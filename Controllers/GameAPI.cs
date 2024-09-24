@@ -23,11 +23,13 @@ namespace GamingAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetGames([FromQuery] int page =1)
+        // public async Task<IActionResult> GetGames()
+        public async Task<IActionResult> GetGames([FromQuery] int page = 1)
         {
             string? apiKey = Environment.GetEnvironmentVariable("RAWG_API_KEY");  // Nullable
             System.Console.WriteLine("TESTING API ENV:");
             System.Console.WriteLine(apiKey);
+            System.Console.WriteLine("page #:" + page);
             
             if (string.IsNullOrEmpty(apiKey))
             {
