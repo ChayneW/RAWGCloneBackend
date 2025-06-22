@@ -27,7 +27,7 @@ builder.Services.AddCors(options =>
     {
         //policy.WithOrigins("http://localhost:3000", "https://rawg-clone-frontend.vercel.app") // Use the production URL
         //Tracking if origin will read.
-        policy.WithOrigins("http://localhost:3000", "https://rawg-clone-frontend.vercel.app" ,"https://gamevault-ten.vercel.app") // Use the production URL
+        policy.WithOrigins("http://localhost:3000", "https://rawg-clone-frontend.vercel.app", "https://www.gamevault-ten.vercel.app", "https://gamevault-ten.vercel.app") // Use the production URL
             .AllowAnyHeader()  // Allow any headers
             .AllowAnyMethod(); // Allow any HTTP methods (GET, POST, PUT, etc.)
     });
@@ -43,6 +43,17 @@ if (app.Environment.IsDevelopment())
 }
 
 // app.UseHealthChecks("/health");
+app.Use(async (context, next) =>
+{
+    var origin = context.Request.Headers["Origin"].ToString();
+    Console.WriteLine($"Incoming request from Origin: {origin}");
+
+    await next();
+
+    var corsHeader = context.Response.Headers["Access-Control-Allow-Origin"].ToString();
+    Console.WriteLine($"CORS response header: Access-Control-Allow-Origin = {corsHeader}");
+});
+
 
 // Apply the CORS middleware before the controllers
 app.UseCors("AllowFrontend");
